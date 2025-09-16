@@ -72,8 +72,7 @@ function calculateNumerology(dateString) {
     return reduceToSingleDigit(sum);
 }
 
-function startScanAnimation() {
-    // Memastikan scan hanya berjalan sekali
+function startScan() {
     if (fingerprintScanner.classList.contains('scanning')) return;
     
     scanLoadingText.textContent = "Sedang memproses...";
@@ -121,8 +120,8 @@ userForm.addEventListener('submit', function(event) {
     scanLoadingText.textContent = "Silakan letakkan jari Anda di area ini.";
 });
 
-fingerprintScanner.addEventListener('mousedown', startScanAnimation);
-fingerprintScanner.addEventListener('touchstart', startScanAnimation);
+fingerprintScanner.addEventListener('mousedown', startScan);
+fingerprintScanner.addEventListener('touchstart', startScan);
 
 restartButton.addEventListener('click', restartApp);
 
