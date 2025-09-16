@@ -121,7 +121,7 @@ input:focus, select:focus {
     align-items: center;
     overflow: hidden;
     cursor: pointer;
-    background: url('fingerprint.svg') no-repeat center center;
+    background: url('fingerprint.png') no-repeat center center;
     background-size: 80%;
     filter: grayscale(100%);
     transition: filter 7s linear;
