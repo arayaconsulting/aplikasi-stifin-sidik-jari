@@ -21,7 +21,7 @@ body {
     margin: 0;
     line-height: 1.6;
     padding: 20px;
-    -webkit-user-select: none; /* Tambahan ini untuk Safari */
+    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -121,13 +121,18 @@ input:focus, select:focus {
     align-items: center;
     overflow: hidden;
     cursor: pointer;
-    background: url('fingerprint.svg') no-repeat center center;
-    background-size: 80%;
-    filter: grayscale(100%);
-    transition: filter 7s linear;
 }
 
-.fingerprint-scanner.scanning {
+.fingerprint-image {
+    width: 80%;
+    height: 80%;
+    filter: grayscale(100%);
+    transition: filter 7s linear;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+}
+
+.fingerprint-scanner.scanning .fingerprint-image {
     filter: grayscale(0%) hue-rotate(120deg);
 }
 
