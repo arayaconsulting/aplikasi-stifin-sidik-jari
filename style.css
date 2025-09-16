@@ -21,9 +21,10 @@ body {
     margin: 0;
     line-height: 1.6;
     padding: 20px;
+    -webkit-user-select: none; /* Tambahan ini untuk Safari */
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
-    -webkit-user-drag: none;
-    touch-action: none;
 }
 
 .container {
