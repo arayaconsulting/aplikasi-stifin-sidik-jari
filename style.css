@@ -21,7 +21,7 @@ body {
     margin: 0;
     line-height: 1.6;
     padding: 20px;
-    -webkit-user-select: none; /* Tambahan ini untuk Safari */
+    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -128,9 +128,9 @@ input:focus, select:focus {
     height: 80%;
     filter: grayscale(100%);
     transition: filter 7s linear;
-    user-select: none;
     -webkit-user-drag: none;
-    touch-action: none;
+    -webkit-touch-callout: none;
+    pointer-events: none;
 }
 
 .fingerprint-scanner.scanning .fingerprint-image {
