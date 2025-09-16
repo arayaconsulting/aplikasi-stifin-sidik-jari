@@ -121,18 +121,13 @@ input:focus, select:focus {
     align-items: center;
     overflow: hidden;
     cursor: pointer;
-}
-
-.fingerprint-image {
-    width: 80%;
-    height: 80%;
+    background: url('fingerprint.svg') no-repeat center center;
+    background-size: 80%;
     filter: grayscale(100%);
     transition: filter 7s linear;
-    -webkit-user-drag: none;
-    -webkit-touch-callout: none;
 }
 
-.fingerprint-scanner.scanning .fingerprint-image {
+.fingerprint-scanner.scanning {
     filter: grayscale(0%) hue-rotate(120deg);
 }
 
