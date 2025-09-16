@@ -21,6 +21,9 @@ body {
     margin: 0;
     line-height: 1.6;
     padding: 20px;
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none;
 }
 
 .container {
@@ -125,7 +128,6 @@ input:focus, select:focus {
 
 .fingerprint-scanner.scanning {
     filter: grayscale(0%) hue-rotate(120deg);
-    box-shadow: 0 0 20px 5px var(--secondary-color);
 }
 
 #scan-loading-text {
