@@ -88,7 +88,7 @@ function showResult() {
     const numerologyNumber = calculateNumerology(birthDate);
     const stifinResult = stifinDescriptions[numerologyNumber].title;
 
-    resultTitle.textContent = `Hasil Kepribadian STIFIn Anda: ${stifinResult}`;
+    resultTitle.textContent = `Hasil Kepribadian STIFIn ${userName}: ${stifinResult}`;
     resultDescription.textContent = "Untuk penjelasan lebih detail dari kepribadian tersebut, akan dijelaskan dalam sesi bersama Mas Ali Mahfud.";
 }
 
