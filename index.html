@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tes STIFIn Unik</title>
+    <title>Tes STIFIn</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
@@ -12,7 +12,7 @@
     <div class="container" id="intro-container">
         <img src="logo.png" alt="Logo Perusahaan" class="logo">
         <h1>Temukan Kepribadian STIFIn Anda</h1>
-        <p>Isi data diri Anda untuk memulai sesi dengan Mas Ali Mahfud.</p>
+        <p>Isi data diri dan lakukan pemindaian jari untuk mengetahui tipe kepribadian STIFIn Anda.</p>
         <form id="user-form">
             <input type="text" id="user-name" placeholder="Nama Lengkap" required>
             <div id="birth-date-container">
@@ -34,21 +34,23 @@
                 <option value="O">O</option>
                 <option value="belum_tahu">Belum Tahu</option>
             </select>
-            <button type="submit" id="start-button">Mulai Pindai Sidik Jari</button>
+            <button type="submit" id="start-button">Lanjutkan</button>
         </form>
     </div>
 
     <div class="container hidden" id="scan-container">
-        <h2 id="scan-text">Silakan Letakkan Jari Anda</h2>
+        <h2 id="scan-text"></h2>
         <div class="fingerprint-scanner" id="fingerprint-scanner">
+            <img src="fingerprint.png" alt="Fingerprint Scanner" class="fingerprint-image">
         </div>
-        <p id="scan-loading-text">Sedang menunggu sentuhan...</p>
+        <p id="scan-loading-text"></p>
+        <button id="next-finger-button" class="hidden">Lanjutkan</button>
     </div>
 
     <div class="container hidden" id="result-container">
         <h2 id="result-title"></h2>
         <p id="result-description"></p>
-        <button id="restart-button">Selanjutnya</button>
+        <button id="restart-button">Ulangi Tes</button>
     </div>
 
     <script src="script.js"></script>
