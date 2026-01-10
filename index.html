@@ -52,40 +52,40 @@
         <button id="restart-button">Ulangi Tes</button>
     </div>
 
-    <div id="certificate-template" style="display: none; width: 1120px; min-height: 790px; background: #fff; position: relative; box-sizing: border-box; padding: 40px 60px; border: 20px solid #1a3a5a; color: #333;">
+   <div id="certificate-template" style="display: none; width: 1100px; height: 780px; background: #fff; position: relative; box-sizing: border-box; padding: 30px 50px; border: 18px solid #1a3a5a; color: #333; overflow: hidden;">
     
-    <div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 3px solid #d4af37; pointer-events: none;"></div>
+    <div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 2px solid #d4af37; pointer-events: none;"></div>
     
     <div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); opacity: 0.04; z-index: 0; pointer-events: none;">
-        <img src="logo.png" style="width: 650px;">
+        <img src="logo.png" style="width: 600px;">
     </div>
 
     <div style="position: relative; z-index: 10;">
-        <div style="text-align: center; margin-bottom: 25px;">
-            <img src="logo.png" style="width: 250px; height: auto;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="logo.png" style="width: 280px; height: auto;">
+        </div>
+
+        <div style="text-align: center; margin-bottom: 15px;">
+            <h2 style="font-size: 24px; border-bottom: 2px solid #1a3a5a; display: inline-block; padding-bottom: 5px; font-family: 'Georgia', serif; margin: 0;">SERTIFIKAT HASIL TES STIFIn</h2>
+            <p style="margin-top: 10px; font-size: 14px; margin-bottom: 5px;">Dengan ini menyatakan bahwa:</p>
+            <h3 style="font-size: 32px; color: #1a3a5a; margin: 0; text-transform: uppercase; font-family: 'Times New Roman', serif;"><span id="cert-name"></span></h3>
         </div>
 
         <div style="text-align: center; margin-bottom: 20px;">
-            <h2 style="font-size: 26px; border-bottom: 2px solid #1a3a5a; display: inline-block; padding-bottom: 5px; font-family: 'Georgia', serif;">SERTIFIKAT HASIL TES STIFIn</h2>
-            <p style="margin-top: 15px; font-size: 16px;">Dengan ini menyatakan bahwa:</p>
-            <h3 style="font-size: 34px; color: #1a3a5a; margin: 5px 0; text-transform: uppercase; font-family: 'Times New Roman', serif;"><span id="cert-name"></span></h3>
-        </div>
-
-        <div style="text-align: center; margin-bottom: 25px;">
-            <div style="background: #1a3a5a; color: white; padding: 12px 50px; border-radius: 8px; display: inline-block;">
-                <span style="font-size: 14px; opacity: 0.9;">HASIL TIPE KECERDASAN:</span><br>
-                <strong style="font-size: 24px; color: #d4af37;" id="cert-result"></strong>
+            <div style="background: #1a3a5a; color: white; padding: 10px 40px; border-radius: 8px; display: inline-block;">
+                <span style="font-size: 13px; opacity: 0.9;">HASIL TIPE KECERDASAN:</span><br>
+                <strong style="font-size: 22px; color: #d4af37;" id="cert-result"></strong>
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px; font-size: 12.5px; line-height: 1.5;">
-            <div style="background: rgba(249, 249, 249, 0.9); padding: 18px; border-radius: 10px; border-left: 5px solid #d4af37; box-shadow: 2px 2px 5px rgba(0,0,0,0.05);">
+        <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 15px; font-size: 12px; line-height: 1.4;">
+            <div style="background: rgba(249, 249, 249, 0.95); padding: 15px; border-radius: 8px; border-left: 5px solid #d4af37;">
                 <p style="margin-top: 0;"><strong>INTISARI KEPRIBADIAN:</strong><br><span id="cert-intisari" style="text-align: justify; display: block;"></span></p>
                 <p><strong>KEBIASAAN KUNCI (SUCCESS HABIT):</strong><br><span id="cert-success"></span></p>
                 <p style="margin-bottom: 0;"><strong>TIPS HUBUNGAN:</strong><br><span id="cert-relationship"></span></p>
             </div>
 
-            <div style="background: rgba(244, 247, 250, 0.9); padding: 18px; border-radius: 10px; border-left: 5px solid #1a3a5a; box-shadow: 2px 2px 5px rgba(0,0,0,0.05);">
+            <div style="background: rgba(244, 247, 250, 0.95); padding: 15px; border-radius: 8px; border-left: 5px solid #1a3a5a;">
                 <p style="margin-top: 0;"><strong>GAYA KOMUNIKASI:</strong><br><span id="cert-communication"></span></p>
                 <p><strong>METODE BELAJAR TERBAIK:</strong><br><span id="cert-study"></span></p>
                 <p><strong>POTENSI KARIR:</strong><br><span id="cert-karir"></span></p>
@@ -96,16 +96,16 @@
             </div>
         </div>
 
-        <div style="margin-top: 35px; display: flex; justify-content: space-between; align-items: flex-end;">
-            <div style="font-size: 11px; color: #666;">
-                <p style="margin: 2px 0;">ID Sertifikat: <strong id="cert-id">ARAYA/STIFIN/2026/AC</strong></p>
+        <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: flex-end;">
+            <div style="font-size: 10px; color: #666;">
+                <p style="margin: 2px 0;">ID Sertifikat: <strong id="cert-id"></strong></p>
                 <p style="margin: 2px 0;">Tanggal Analisis: <span id="cert-date"></span></p>
-                <p style="margin: 2px 0; color: #d4af37; font-weight: bold;">Araya Consulting - Personality Development Specialist</p>
+                <p style="margin: 2px 0; color: #d4af37; font-weight: bold;">Araya Consulting - Grow People Grow Business</p>
             </div>
-            <div style="text-align: center; min-width: 250px;">
-                <p style="margin-bottom: 50px; font-size: 14px;">Disahkan oleh,</p>
-                <strong style="text-decoration: underline; font-size: 18px; color: #1a3a5a;">ALI MAHFUD</strong><br>
-                <span style="color: #d4af37; font-weight: bold; font-size: 13px;">Founder Araya Consulting</span>
+            <div style="text-align: center; min-width: 200px;">
+                <p style="margin-bottom: 45px; font-size: 13px;">Disahkan oleh,</p>
+                <strong style="text-decoration: underline; font-size: 16px; color: #1a3a5a;">ALI MAHFUD</strong><br>
+                <span style="color: #d4af37; font-weight: bold; font-size: 12px;">Founder Araya Consulting</span>
             </div>
         </div>
     </div>
