@@ -242,19 +242,21 @@ document.getElementById('download-btn').addEventListener('click', () => {
     el.style.display = 'block';
     
     const opt = {
-        margin: 0,
+        margin: 0, 
         filename: `Sertifikat_STIFIn_${userName}.pdf`,
         image: { type: 'jpeg', quality: 1 },
         html2canvas: { 
             scale: 2, 
             useCORS: true, 
             logging: false,
-            backgroundColor: '#ffffff' // Memastikan latar belakang putih bersih
+            width: 1080, // Sesuai lebar template
+            height: 760  // Sesuai tinggi template
         },
         jsPDF: { 
             unit: 'mm', 
             format: 'a4', 
-            orientation: 'landscape'
+            orientation: 'landscape',
+            compress: true
         },
         pagebreak: { mode: 'avoid-all' }
     };
