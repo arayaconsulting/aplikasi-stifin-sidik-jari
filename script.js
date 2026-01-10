@@ -1,3 +1,7 @@
+/**
+ * DATA STRATEGIS STIFIN - ARAYA CONSULTING
+ * Manual Book Pengembangan Diri Berbasis Kecerdasan Genetik
+ */
 const stifinDescriptions = {
     1: { 
         title: "Thinking Introvert (Ti)",
@@ -124,7 +128,7 @@ let userName = "";
 let birthDate = "";
 let isScanning = false;
 
-// 1. FUNGSI PENGISI TANGGAL (PERBAIKAN)
+// 1. PENGISIAN TANGGAL LAHIR
 function populateDateFields() {
     const d = document.getElementById('day');
     const m = document.getElementById('month');
@@ -153,7 +157,7 @@ function populateDateFields() {
     }
 }
 
-// 2. LOGIKA NUMEROLOGI & ID UNIK
+// 2. LOGIKA NUMEROLOGI & GENERATE ID
 function calculateNumerology(dateString) {
     const digits = dateString.replace(/-/g, '').split('').map(Number);
     let sum = digits.reduce((a, b) => a + b, 0);
@@ -162,15 +166,14 @@ function calculateNumerology(dateString) {
 }
 
 function generateCertificateID() {
-    const now = new Date();
-    const year = now.getFullYear();
+    const year = new Date().getFullYear();
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     return `ARAYA/STIFIN/${year}/${randomNum}`;
 }
 
-// 3. PROSES SCANNING (VERSI PERBAIKAN)
+// 3. HANDLER PEMINDAIAN
 function handleScanStart(e) {
-    if (e) e.preventDefault(); // Mencegah zoom/scroll pada layar sentuh
+    if (e) e.preventDefault();
     if (isScanning) return;
     
     isScanning = true;
@@ -194,10 +197,11 @@ function handleScanStart(e) {
     }, 2000);
 }
 
-// Menambahkan pemicu untuk klik (mouse) dan sentuhan (touchscreen)
 const scannerElement = document.getElementById('fingerprint-scanner');
-scannerElement.addEventListener('mousedown', handleScanStart);
-scannerElement.addEventListener('touchstart', handleScanStart);
+if(scannerElement) {
+    scannerElement.addEventListener('mousedown', handleScanStart);
+    scannerElement.addEventListener('touchstart', handleScanStart);
+}
 
 document.getElementById('next-finger-button').addEventListener('click', function() {
     currentFingerIndex++;
@@ -205,7 +209,7 @@ document.getElementById('next-finger-button').addEventListener('click', function
     document.getElementById('scan-text').textContent = `Letakkan ${fingers[currentFingerIndex]} Anda.`;
 });
 
-// 4. MENAMPILKAN HASIL
+// 4. PENAMPILAN HASIL & PENGISIAN SERTIFIKAT
 function showResult() {
     document.getElementById('scan-container').classList.add('hidden');
     document.getElementById('result-container').classList.remove('hidden');
@@ -216,7 +220,7 @@ function showResult() {
     document.getElementById('result-title').textContent = data.title;
     document.getElementById('result-description').textContent = data.intisari;
 
-    // Isi Data Sertifikat
+    // Fill Certificate Data
     document.getElementById('cert-name').textContent = userName;
     document.getElementById('cert-result').textContent = data.title;
     document.getElementById('cert-intisari').textContent = data.intisari;
@@ -228,31 +232,39 @@ function showResult() {
     document.getElementById('cert-negatif').textContent = data.negatif;
     document.getElementById('cert-karir').textContent = data.karir;
     
-    // Tanggal & ID Unik
-    const today = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-    document.getElementById('cert-date').textContent = today;
-    
-    // Mencari elemen ID Sertifikat di HTML
-    const certIDElement = document.querySelector("#certificate-template strong:contains('ARAYA/STIFIN/2026/AC')") || 
-                          document.getElementById('cert-id'); 
-    if(certIDElement) certIDElement.textContent = generateCertificateID();
+    document.getElementById('cert-date').textContent = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    document.getElementById('cert-id').textContent = generateCertificateID();
 }
 
-// 5. DOWNLOAD PDF
+// 5. DOWNLOAD PDF (OPTIMASI AGAR TIDAK TERPOTONG)
 document.getElementById('download-btn').addEventListener('click', () => {
     const el = document.getElementById('certificate-template');
     el.style.display = 'block';
+    
     const opt = {
-        margin: 0,
+        margin: [0, 0, 0, 0],
         filename: `Sertifikat_STIFIn_${userName}.pdf`,
         image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+        html2canvas: { 
+            scale: 2, 
+            useCORS: true, 
+            logging: false,
+            letterRendering: true
+        },
+        jsPDF: { 
+            unit: 'mm', 
+            format: 'a4', 
+            orientation: 'landscape',
+            compress: true
+        }
     };
-    html2pdf().set(opt).from(el).save().then(() => el.style.display = 'none');
+
+    html2pdf().set(opt).from(el).save().then(() => {
+        el.style.display = 'none';
+    });
 });
 
-// 6. EVENT INITIALIZATION
+// 6. INITIALIZATION
 document.getElementById('user-form').addEventListener('submit', (e) => {
     e.preventDefault();
     userName = document.getElementById('user-name').value;
@@ -264,7 +276,5 @@ document.getElementById('user-form').addEventListener('submit', (e) => {
 
 document.getElementById('restart-button').addEventListener('click', () => location.reload());
 
-// Panggil fungsi tanggal segera setelah script dimuat
 populateDateFields();
-// Cadangan panggil saat window selesai dimuat
 window.onload = populateDateFields;
