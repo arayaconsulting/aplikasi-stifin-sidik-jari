@@ -242,23 +242,21 @@ document.getElementById('download-btn').addEventListener('click', () => {
     el.style.display = 'block';
     
     const opt = {
-        margin: [0, 0, 0, 0], // Tanpa margin agar tidak ada sisa kertas putih
+        margin: 0,
         filename: `Sertifikat_STIFIn_${userName}.pdf`,
         image: { type: 'jpeg', quality: 1 },
         html2canvas: { 
             scale: 2, 
             useCORS: true, 
-            logging: false,
-            letterRendering: true
+            logging: false
         },
         jsPDF: { 
             unit: 'mm', 
             format: 'a4', 
-            orientation: 'landscape',
-            compress: true
+            orientation: 'landscape' 
         },
-        // Mencegah PDF memotong elemen di tengah (PENTING)
-        pagebreak: { mode: 'avoid-all' } 
+        // MENCEGAH PEMOTONGAN HALAMAN
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
     };
 
     html2pdf().set(opt).from(el).save().then(() => {
