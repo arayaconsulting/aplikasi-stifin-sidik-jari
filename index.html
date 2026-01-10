@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tes STIFIn</title>
+    <title>Tes STIFIn - Araya Consulting</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <div class="container" id="intro-container">
         <img src="logo.png" alt="Logo Perusahaan" class="logo">
         <h1>Temukan Kepribadian STIFIn Anda</h1>
-        <p>Isi data diri dan lakukan pemindaian jari untuk mengetahui tipe kepribadian STIFIn Anda.</p>
+        <p>Araya Consulting - Personality Development Specialist</p>
+        
         <form id="user-form">
             <input type="text" id="user-name" placeholder="Nama Lengkap" required>
             <div id="birth-date-container">
@@ -42,6 +44,7 @@
         <h2 id="scan-text"></h2>
         <div class="fingerprint-scanner" id="fingerprint-scanner">
             <img src="fingerprint.png" alt="Fingerprint Scanner" class="fingerprint-image">
+            <div class="scan-line"></div>
         </div>
         <p id="scan-loading-text"></p>
         <button id="next-finger-button" class="hidden">Lanjutkan</button>
@@ -49,8 +52,59 @@
 
     <div class="container hidden" id="result-container">
         <h2 id="result-title"></h2>
-        <p id="result-description"></p>
+        <div class="result-box">
+            <p id="result-description"></p>
+        </div>
+        <button id="download-btn" style="background-color: #27ae60; color: white; margin-bottom: 10px;">Unduh Sertifikat (PDF)</button>
         <button id="restart-button">Ulangi Tes</button>
+    </div>
+
+    <div id="certificate-template" style="display: none; padding: 40px; border: 15px solid #1a3a5a; font-family: Arial, sans-serif; width: 1000px; background: white; position: relative; box-sizing: border-box; color: #333;">
+        
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; z-index: 0; pointer-events: none;">
+            <img src="logo.png" style="width: 600px;">
+        </div>
+
+        <div style="position: relative; z-index: 1;">
+            <div style="display: flex; align-items: center; border-bottom: 3px solid #1a3a5a; padding-bottom: 15px; margin-bottom: 20px;">
+                <img src="logo.png" style="width: 90px; margin-right: 20px;">
+                <div style="text-align: left;">
+                    <h1 style="margin: 0; color: #1a3a5a; font-size: 28px;">ARAYA CONSULTING</h1>
+                    <p style="margin: 0; font-size: 14px; color: #666;">Human Resource & Personality Development Specialist</p>
+                </div>
+            </div>
+
+            <h2 style="text-align: center; color: #2c3e50; text-decoration: underline;">SERTIFIKAT HASIL TES STIFIn</h2>
+            
+            <div style="margin: 20px 0;">
+                <p>Berdasarkan hasil analisis pola sidik jari digital, diberikan kepada:</p>
+                <h3 style="font-size: 26px; color: #1a3a5a; margin: 5px 0;"><span id="cert-name"></span></h3>
+                <h4 style="font-size: 18px; background: #f4f4f4; padding: 8px 12px; display: inline-block; border-left: 5px solid #d35400; margin-top: 10px;">
+                    HASIL: <span id="cert-result" style="color: #d35400;"></span>
+                </h4>
+            </div>
+
+            <div style="font-size: 13px; line-height: 1.5; border: 1px solid #ddd; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.85);">
+                <p><strong>Intisari Tentang Anda:</strong><br><span id="cert-intisari"></span></p>
+                <p><strong>Empat Kata Kunci:</strong> <span id="cert-keywords"></span> | <strong>Kemistri:</strong> <span id="cert-chemistry"></span></p>
+                <p style="margin-top: 5px;"><strong>Cara Belajar:</strong> <span id="cert-study"></span></p>
+                <p style="margin-top: 5px;"><strong>Sisi Positif:</strong> <span id="cert-positif"></span></p>
+                <p style="margin-top: 5px;"><strong>Sisi Negatif:</strong> <span id="cert-negatif"></span></p>
+                <p style="margin-top: 5px;"><strong>Potensi Karir:</strong> <span id="cert-karir"></span></p>
+            </div>
+
+            <div style="margin-top: 35px; display: flex; justify-content: space-between; align-items: flex-end;">
+                <div style="font-size: 11px; color: #888;">
+                    <p>ID Sertifikat: <strong>ARAYA/STIFIN/2026/AC</strong></p>
+                    <p>Tanggal Analisis: <span id="cert-date"></span></p>
+                </div>
+                <div style="text-align: center; min-width: 200px;">
+                    <p style="margin-bottom: 50px;">Disahkan oleh,</p>
+                    <strong style="font-size: 16px; text-decoration: underline;">ALI MAHFUD</strong><br>
+                    <span style="font-size: 13px;">Founder Araya Consulting</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
