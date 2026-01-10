@@ -239,8 +239,6 @@ function showResult() {
 // 5. DOWNLOAD PDF (OPTIMASI AGAR TIDAK TERPOTONG)
 document.getElementById('download-btn').addEventListener('click', () => {
     const el = document.getElementById('certificate-template');
-    
-    // Tampilkan elemen sejenak untuk proses pengambilan gambar
     el.style.display = 'block';
     
     const opt = {
@@ -251,20 +249,18 @@ document.getElementById('download-btn').addEventListener('click', () => {
             scale: 2, 
             useCORS: true, 
             logging: false,
-            letterRendering: true
+            backgroundColor: '#ffffff' // Memastikan latar belakang putih bersih
         },
         jsPDF: { 
             unit: 'mm', 
             format: 'a4', 
-            orientation: 'landscape',
-            compress: true
+            orientation: 'landscape'
         },
-        // INI KUNCI AGAR TIDAK TERPOTONG KE HALAMAN BARU
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: { mode: 'avoid-all' }
     };
 
     html2pdf().set(opt).from(el).save().then(() => {
-        el.style.display = 'none'; // Sembunyikan kembali setelah selesai
+        el.style.display = 'none';
     });
 });
 
