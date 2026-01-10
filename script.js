@@ -242,7 +242,7 @@ document.getElementById('download-btn').addEventListener('click', () => {
     el.style.display = 'block';
     
     const opt = {
-        margin: [0, 0, 0, 0],
+        margin: [0, 0, 0, 0], // Tanpa margin agar tidak ada sisa kertas putih
         filename: `Sertifikat_STIFIn_${userName}.pdf`,
         image: { type: 'jpeg', quality: 1 },
         html2canvas: { 
@@ -256,7 +256,9 @@ document.getElementById('download-btn').addEventListener('click', () => {
             format: 'a4', 
             orientation: 'landscape',
             compress: true
-        }
+        },
+        // Mencegah PDF memotong elemen di tengah (PENTING)
+        pagebreak: { mode: 'avoid-all' } 
     };
 
     html2pdf().set(opt).from(el).save().then(() => {
