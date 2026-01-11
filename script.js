@@ -1,163 +1,126 @@
 /**
- * DATA STRATEGIS STIFIN - ARAYA CONSULTING
- * Manual Book Pengembangan Diri Berbasis Kecerdasan Genetik
+ * FULL SCRIPT STIFIn - ARAYA CONSULTING
+ * Dioptimalkan untuk Layout Sertifikat Elegan & PDF Anti-Potong
  */
+
 const stifinDescriptions = {
     1: { 
-        title: "Thinking Introvert (Ti)",
-        intisari: "Kecerdasan logika mendalam yang dikendalikan dari dalam diri. Anda adalah pakar analisis yang mandiri, objektif, dan memiliki standar integritas tinggi terhadap fakta.",
-        keywords: "Menalar, Mendalam, Mandiri, Tulang.",
-        chemistry: "Tahta (Kekuasaan & Otoritas).",
-        study: "Fokus pada struktur, skema logika mendalam, dan mendalami satu bidang keahlian secara spesifik.",
-        communication: "Berikan data logis dan hargai kemandiriannya. Jangan mendikte proses kerjanya.",
-        successHabit: "Membangun sistem atau standar operasional (SOP) yang presisi dalam setiap pekerjaan.",
-        relationship: "Membutuhkan pasangan yang menghargai privasi dan mampu berdiskusi intelektual.",
-        positif: "Analitis, disiplin, mandiri, dan pakar di bidangnya.",
-        negatif: "Kaku, kurang empati, dan terkadang terlalu kritis.",
-        karir: "Ilmuwan, Auditor, Programmer, Analis Data."
+        title: "Sensing Introwert (Si)", 
+        intisari: "Kecerdasan fisik yang dikemudikan dari dalam. Anda adalah praktisi yang sangat teliti, disiplin, dan memiliki daya tahan kerja yang luar biasa. Anda sangat menghargai data konkret dan pengalaman nyata.", 
+        successHabit: "Menjaga stamina fisik dan ketertiban administrasi aset secara rutin.", 
+        relationship: "Mencari stabilitas jangka panjang dan bukti kesetiaan nyata.", 
+        communication: "Gunakan instruksi yang praktis, konkret, dan langkah demi langkah.", 
+        study: "Latihan fisik berulang (drilling) dan menghafal data detail.", 
+        positif: "Teliti, disiplin tinggi, produktif.", 
+        negatif: "Kaku, sulit adaptasi, terlalu prosedural.", 
+        karir: "Akuntan, Manajer Operasional, Atlet." 
     },
     2: { 
-        title: "Feeling Ekstrovert (Fe)",
-        intisari: "Kecerdasan emosional yang dikemudikan dari luar. Anda adalah pemimpin alami yang hebat dalam persuasi dan mampu menggerakkan massa melalui energi sosial.",
-        keywords: "Memimpin, Hubungan, Komunikasi, Pernapasan.",
-        chemistry: "Cinta (Penerimaan Sosial).",
-        study: "Belajar melalui diskusi, mengajar orang lain, dan lingkungan yang harmonis.",
-        communication: "Sentuh perasaannya dahulu, berikan apresiasi tulus, dan bicara dengan nada hangat.",
-        successHabit: "Membangun jejaring (networking) dan menjaga silaturahmi secara konsisten.",
-        relationship: "Membutuhkan pengakuan, pujian, dan kasih sayang verbal yang rutin.",
-        positif: "Komunikatif, empatik, persuasif, dan pandai mengelola tim.",
-        negatif: "Terlalu subjektif dan mudah terpengaruh oleh suasana hati (moody).",
-        karir: "Politisi, Motivator, Leader, HR Manager."
+        title: "Sensing Ekstrowert (Se)", 
+        intisari: "Kecerdasan fisik yang dikemudikan dari luar. Anda sangat cekatan, gesit, dan pandai melihat peluang bisnis. Anda senang beraksi nyata di lapangan untuk mendapatkan hasil yang terlihat instan.", 
+        successHabit: "Segera mengeksekusi peluang tanpa terlalu banyak berteori di awal.", 
+        relationship: "Suka memberikan hadiah fisik dan senang petualangan bersama.", 
+        communication: "To the point pada manfaat praktis dan keuntungan yang didapat.", 
+        study: "Learning by doing dan simulasi langsung di lapangan.", 
+        positif: "Cekatan, gesit, dermawan.", 
+        negatif: "Impulsif, boros, ceroboh.", 
+        karir: "Pengusaha, Marketing, Kontraktor." 
     },
     3: { 
-        title: "Sensing Introvert (Si)",
-        intisari: "Kecerdasan panca indra yang dikendalikan dari dalam. Anda adalah praktisi gigih dengan daya tahan fisik luar biasa, mencintai keteraturan dan bukti nyata.",
-        keywords: "Mengingat, Gigih, Disiplin, Otot.",
-        chemistry: "Harta (Kekayaan & Aset).",
-        study: "Repetisi (pengulangan), latihan fisik berulang, dan fokus pada data detail konkret.",
-        communication: "Bicaralah berbasis bukti nyata dan langkah demi langkah. Hindari hal abstrak.",
-        successHabit: "Menjaga kebugaran fisik dan rutin menginventarisir aset secara berkala.",
-        relationship: "Mencari keamanan finansial dan kepastian jangka panjang dalam hubungan.",
-        positif: "Sangat teliti, disiplin tinggi, produktif, dan praktis.",
-        negatif: "Kaku terhadap perubahan dan terkadang terlalu materialistik.",
-        karir: "Atlet, Manajer Operasional, Akuntan, Administrasi."
+        title: "Thinking Introwert (Ti)", 
+        intisari: "Kecerdasan logika yang dikemudikan dari dalam. Anda adalah konseptor yang mandiri, objektif, dan sangat presisi. Anda mampu mengurai masalah rumit menjadi sistem yang logis.", 
+        successHabit: "Membangun sistem atau standar kerja (SOP) yang sangat mendetail.", 
+        relationship: "Menghargai ruang privasi dan diskusi intelektual yang substansial.", 
+        communication: "Berikan data logis dan hargai ruang berpikirnya.", 
+        study: "Mendalami struktur dan skema logika secara spesifik.", 
+        positif: "Analitis, objektif, pakar.", 
+        negatif: "Dingin, terlalu kritis, sinis.", 
+        karir: "Ilmuwan, Auditor, Programmer, Analis Data." 
     },
     4: { 
-        title: "Sensing Ekstrovert (Se)",
-        intisari: "Kecerdasan fisik yang dikemudikan dari luar. Anda sangat cekatan dan dermawan, senang beraksi nyata di lapangan untuk hasil yang terlihat instan.",
-        keywords: "Beraksi, Dermawan, Praktis, Indra.",
-        chemistry: "Harta (Kekayaan & Pengakuan).",
-        study: "Belajar langsung di lapangan, simulasi, dan praktek nyata (Learning by doing).",
-        communication: "To the point pada manfaat praktis dan keuntungan yang bisa segera didapat.",
-        successHabit: "Segera mengeksekusi peluang tanpa terlalu banyak berteori di awal.",
-        relationship: "Suka memberikan hadiah fisik dan senang petualangan bersama pasangan.",
-        positif: "Cekatan, gesit, pandai melihat peluang, dan dermawan.",
-        negatif: "Kurang perencanaan jangka panjang dan mudah bosan dengan teori.",
-        karir: "Pengusaha, Marketing, Kontraktor, Olahragawan."
+        title: "Thinking Ekstrowert (Te)", 
+        intisari: "Kecerdasan logika yang dikemudikan dari luar. Anda adalah manajer sistem yang tegas dan berorientasi pada hasil. Anda hebat dalam mengelola sumber daya dan mengontrol organisasi.", 
+        successHabit: "Mendelegasikan tugas teknis untuk fokus pada kontrol sistem.", 
+        relationship: "Mencari pasangan logis yang mendukung status sosial dan karir.", 
+        communication: "Bicara langsung pada hasil (result-oriented) dan otoritas.", 
+        study: "Mengorganisir bahan belajar ke dalam sistem yang efisien.", 
+        positif: "Tegas, manajerial kuat, adil.", 
+        negatif: "Otoriter, dominan, kurang empati.", 
+        karir: "CEO, Manajer Profesional, Administrator." 
     },
     5: { 
-        title: "Feeling Introvert (Fi)",
-        intisari: "Kecerdasan emosional yang dikendalikan dari dalam. Anda pribadi idealis dengan keyakinan kuat dan bergerak berdasarkan panggilan hati.",
-        keywords: "Merasakan, Idealis, Keyakinan, Jantung.",
-        chemistry: "Cinta (Kedekatan Emosi).",
-        study: "Mencari makna mendalam pelajaran dan butuh suasana tenang tanpa tekanan.",
-        communication: "Gunakan pendekatan personal, hargai prinsipnya, jangan singgung perasaan.",
-        successHabit: "Menjaga integritas antara kata dan perbuatan sesuai kata hati.",
-        relationship: "Sangat setia dan mencari koneksi jiwa yang mendalam (soulmate).",
-        positif: "Setia, tulus, prinsip kuat, dan penyayang.",
-        negatif: "Sangat sensitif dan cenderung memendam masalah sendiri.",
-        karir: "Psikolog, Penulis, Seniman, Konselor, Aktivis."
+        title: "Intuiting Introwert (Ii)", 
+        intisari: "Kecerdasan kreatif yang dikemudikan dari dalam. Anda adalah perancang strategi yang perfeksionis dengan imajinasi kuat. Anda selalu memikirkan visi jangka panjang yang berkualitas.", 
+        successHabit: "Menyusun Master Plan jangka panjang yang mendetail.", 
+        relationship: "Eksklusif dalam memilih teman dan menghargai privasi pikiran.", 
+        communication: "Bicara pada standar kualitas tinggi dan hargai risetnya.", 
+        study: "Menganalisis konsep abstrak dan riset mandiri.", 
+        positif: "Strategis, perfeksionis, visioner.", 
+        negatif: "Tertutup, lambat beraksi, perfeksionis ekstrem.", 
+        karir: "Peneliti, Detektif, Konseptor, Strategist." 
     },
     6: { 
-        title: "Intuiting Ekstrovert (Ie)",
-        intisari: "Kecerdasan kreatif yang dikemudikan dari luar. Anda pencipta peluang visioner, haus inovasi, dan pandai merakit ide menjadi konsep besar.",
-        keywords: "Mencipta, Peluang, Perubahan, Perut.",
-        chemistry: "Kata (Ilmu & Gagasan).",
-        study: "Gunakan mind mapping, visualisasi, dan cara-cara baru yang inovatif.",
-        communication: "Berikan ruang beride, bicara masa depan, jangan batasi kreativitas.",
-        successHabit: "Terus meng-upgrade ilmu dan mencari mentor visioner.",
-        relationship: "Butuh pasangan suportif terhadap mimpi besar dan asyik bertukar pikiran.",
-        positif: "Sangat kreatif, optimis, visioner, dan membawa perubahan.",
-        negatif: "Kurang fokus detail teknis dan mudah berganti fokus ide.",
-        karir: "Inovator, Arsitek, Desainer, Pakar Strategi."
+        title: "Intuiting Ekstrowert (Ie)", 
+        intisari: "Kecerdasan kreatif yang dikemudikan dari luar. Anda adalah inovator visioner yang haus akan ide baru. Anda mampu melihat peluang masa depan dan merakitnya menjadi terobosan.", 
+        successHabit: "Terus memperbarui ilmu pengetahuan dan mencari mentor visioner.", 
+        relationship: "Membutuhkan pasangan yang mendukung mimpi besarnya.", 
+        communication: "Berikan ruang untuk beride dan bicarakan visi masa depan.", 
+        study: "Mind mapping dan visualisasi gambar.", 
+        positif: "Kreatif, optimis, inovatif.", 
+        negatif: "Mudah bosan, tidak konsisten, kurang fokus.", 
+        karir: "Inovator, Arsitek, Desainer, Pakar Strategi." 
     },
     7: { 
-        title: "Intuiting Introvert (Ii)",
-        intisari: "Kecerdasan kreatif dikendalikan dari dalam. Perancang strategi perfeksionis dengan imajinasi kuat dan mengutamakan kualitas tinggi.",
-        keywords: "Membayangkan, Strategis, Kualitas, Otak Kanan.",
-        chemistry: "Kata (Ilmu & Kualitas).",
-        study: "Menganalisis konsep abstrak, riset mendalam, dan perencanaan jangka panjang.",
-        communication: "Bicara level kualitas tinggi. Jangan paksa cepat jika kualitas belum tercapai.",
-        successHabit: "Membuat perencanaan jangka panjang yang sangat detail (Master Plan).",
-        relationship: "Eksklusif memilih pasangan dan sangat menghargai privasi intelektual.",
-        positif: "Strategis, perfeksionis, berwibawa, visi jangka panjang.",
-        negatif: "Terlalu tertutup dan sulit dipuaskan (standar terlalu tinggi).",
-        karir: "Perencana Strategis, Peneliti, Detektif, Konseptor."
+        title: "Feeling Introwert (Fi)", 
+        intisari: "Kecerdasan emosi yang dikemudikan dari dalam. Anda adalah pribadi idealis dengan panggilan moral yang kuat. Anda memimpin dengan integritas jiwa dan kelembutan hati.", 
+        successHabit: "Menjaga integritas antara perbuatan dan panggilan hati.", 
+        relationship: "Mencari kesetiaan murni dan koneksi jiwa (soulmate).", 
+        communication: "Hargai prinsip pribadinya dan gunakan pendekatan personal.", 
+        study: "Mencari makna mendalam dalam suasana tenang.", 
+        positif: "Setia, tulus, prinsip kuat.", 
+        negatif: "Sangat sensitif, mudah tersinggung, memendam kecewa.", 
+        karir: "Psikolog, Penulis, Konselor, Aktivis." 
     },
     8: { 
-        title: "Thinking Ekstrovert (Te)",
-        intisari: "Kecerdasan logika dikemudikan dari luar. Manajer sistem hebat, objektif, tegas, dan sangat fokus pada target efisiensi kerja.",
-        keywords: "Mengelola, Sistem, Objektif, Otak Kiri.",
-        chemistry: "Tahta (Kekuasaan & Pengelolaan).",
-        study: "Mengorganisir bahan belajar ke sistem rapi dan fokus efisiensi waktu.",
-        communication: "Bicara langsung hasil (result-oriented), gunakan logika dan otoritas.",
-        successHabit: "Mendelegasikan tugas teknis dan fokus kontrol sistem serta keputusan.",
-        relationship: "Butuh pasangan logis yang mendukung karir/status sosialnya.",
-        positif: "Tegas, objektif, manajerial kuat, fokus hasil.",
-        negatif: "Otoriter dan kurang peka terhadap perasaan orang lain.",
-        karir: "CEO, Manajer Profesional, Birokrat, Administrator."
+        title: "Feeling Ekstrowert (Fe)", 
+        intisari: "Kecerdasan emosi yang dikemudikan dari luar. Anda adalah komunikator persuasif yang sangat empatik. Anda mampu menginspirasi dan menggerakkan banyak orang dengan mudah.", 
+        successHabit: "Menjaga hubungan sosial dan jejaring (networking) secara aktif.", 
+        relationship: "Membutuhkan apresiasi verbal dan pengakuan emosional.", 
+        communication: "Sentuh perasaannya dahulu sebelum masuk ke topik teknis.", 
+        study: "Diskusi kelompok dan mengajar kembali kepada orang lain.", 
+        positif: "Komunikatif, empatik, persuasif.", 
+        negatif: "Subjektif, moody, haus pujian.", 
+        karir: "Politisi, Motivator, Leader, HR Manager." 
     },
     9: { 
-        title: "Insting (In)",
-        intisari: "Kecerdasan naluri sebagai indera ketujuh. Responsif, generalis (serba bisa), dan memiliki adaptasi sangat cepat.",
-        keywords: "Merangkai, Reflek, Berkorban, Otomatis.",
-        chemistry: "Bahagia (Ngeklik secara alami).",
-        study: "Merangkai bacaan menjadi rangkuman dan mengurai kembali, gunakan latar musik.",
-        communication: "Bicara langsung pada poinnya dan berikan suasana santai tanpa tekanan.",
-        successHabit: "Rutin melakukan jeda spiritual untuk menajamkan naluri.",
-        relationship: "Sangat tulus, tidak suka konflik, mencari kedamaian hubungan.",
-        positif: "Sangat jujur, responsif, spiritualis, naluri tajam.",
-        negatif: "Temperamental jika tertekan, peragu, dan naif.",
-        karir: "Mediator, Jurnalis, Aktivis, Musik, Chef."
+        title: "Instinct (In)", 
+        intisari: "Kecerdasan naluri yang responsif dan adaptif. Anda adalah pribadi yang jujur, tulus, dan mencari keharmonisan. Anda hebat sebagai mediator karena sifat cinta damai Anda.", 
+        successHabit: "Rutin melakukan jeda spiritual untuk menajamkan naluri.", 
+        relationship: "Sangat tulus, tidak suka konflik, mencari kedamaian.", 
+        communication: "Bicara langsung pada poinnya dalam suasana santai.", 
+        study: "Merangkai potongan informasi menjadi rangkuman utuh.", 
+        positif: "Jujur, responsif, naluri tajam.", 
+        negatif: "Peragu, pasif, kurang pendirian.", 
+        karir: "Mediator, Jurnalis, Aktivis, Chef." 
     }
 };
 
 const fingers = ["ibu jari", "telunjuk", "tengah", "manis", "kelingking"];
-let currentFingerIndex = 0;
-let userName = "";
-let birthDate = "";
-let isScanning = false;
+let currentFingerIndex = 0, userName = "", birthDate = "", isScanning = false;
 
-// 1. PENGISIAN TANGGAL LAHIR
 function populateDateFields() {
-    const d = document.getElementById('day');
-    const m = document.getElementById('month');
-    const y = document.getElementById('year');
-    
+    const d = document.getElementById('day'), m = document.getElementById('month'), y = document.getElementById('year');
     if(!d || !m || !y) return;
-
     d.innerHTML = '<option value="" disabled selected>Hari</option>';
     m.innerHTML = '<option value="" disabled selected>Bulan</option>';
     y.innerHTML = '<option value="" disabled selected>Tahun</option>';
-
-    for(let i=1; i<=31; i++) {
-        const val = String(i).padStart(2,'0');
-        d.innerHTML += `<option value="${val}">${i}</option>`;
-    }
-
+    for(let i=1; i<=31; i++) d.innerHTML += `<option value="${String(i).padStart(2,'0')}">${i}</option>`;
     const months = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
-    months.forEach((mon, i) => {
-        const val = String(i+1).padStart(2,'0');
-        m.innerHTML += `<option value="${val}">${mon}</option>`;
-    });
-
+    months.forEach((mon, i) => m.innerHTML += `<option value="${String(i+1).padStart(2,'0')}">${mon}</option>`);
     const currentYear = new Date().getFullYear();
-    for(let i=currentYear; i>=1950; i--) {
-        y.innerHTML += `<option value="${i}">${i}</option>`;
-    }
+    for(let i=currentYear; i>=1950; i--) y.innerHTML += `<option value="${i}">${i}</option>`;
 }
 
-// 2. LOGIKA NUMEROLOGI & GENERATE ID
 function calculateNumerology(dateString) {
     const digits = dateString.replace(/-/g, '').split('').map(Number);
     let sum = digits.reduce((a, b) => a + b, 0);
@@ -165,33 +128,21 @@ function calculateNumerology(dateString) {
     return sum || 9;
 }
 
-function generateCertificateID() {
-    const year = new Date().getFullYear();
-    const randomNum = Math.floor(1000 + Math.random() * 9000);
-    return `ARAYA/STIFIN/${year}/${randomNum}`;
-}
-
-// 3. HANDLER PEMINDAIAN
 function handleScanStart(e) {
     if (e) e.preventDefault();
     if (isScanning) return;
-    
     isScanning = true;
-    const scanner = document.getElementById('fingerprint-scanner');
-    const text = document.getElementById('scan-text');
-    
+    const scanner = document.getElementById('fingerprint-scanner'), text = document.getElementById('scan-text');
     text.textContent = `Memindai ${fingers[currentFingerIndex]}...`;
     scanner.classList.add('scanning');
-
     setTimeout(() => {
         scanner.classList.remove('scanning');
         isScanning = false;
-        
         if (currentFingerIndex < fingers.length - 1) {
             text.textContent = `${fingers[currentFingerIndex].toUpperCase()} BERHASIL.`;
             document.getElementById('next-finger-button').classList.remove('hidden'); 
         } else {
-            text.textContent = "MENGANALISIS POLA...";
+            text.textContent = "MENGANALISIS DATA STIFIn...";
             setTimeout(showResult, 1500);
         }
     }, 2000);
@@ -209,18 +160,15 @@ document.getElementById('next-finger-button').addEventListener('click', function
     document.getElementById('scan-text').textContent = `Letakkan ${fingers[currentFingerIndex]} Anda.`;
 });
 
-// 4. PENAMPILAN HASIL & PENGISIAN SERTIFIKAT
 function showResult() {
     document.getElementById('scan-container').classList.add('hidden');
     document.getElementById('result-container').classList.remove('hidden');
-    
     const resNum = calculateNumerology(birthDate);
     const data = stifinDescriptions[resNum];
 
     document.getElementById('result-title').textContent = data.title;
     document.getElementById('result-description').textContent = data.intisari;
 
-    // Fill Certificate Data
     document.getElementById('cert-name').textContent = userName;
     document.getElementById('cert-result').textContent = data.title;
     document.getElementById('cert-intisari').textContent = data.intisari;
@@ -232,41 +180,27 @@ function showResult() {
     document.getElementById('cert-negatif').textContent = data.negatif;
     document.getElementById('cert-karir').textContent = data.karir;
     
-    document.getElementById('cert-date').textContent = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-    document.getElementById('cert-id').textContent = generateCertificateID();
+    const now = new Date();
+    document.getElementById('cert-date').textContent = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    const randomId = Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('cert-id').textContent = `ARAYA/STIFIn/${now.getFullYear()}/${randomId}`;
 }
 
-// 5. DOWNLOAD PDF (OPTIMASI AGAR TIDAK TERPOTONG)
 document.getElementById('download-btn').addEventListener('click', () => {
     const el = document.getElementById('certificate-template');
     el.style.display = 'block';
     
     const opt = {
-        margin: 0, 
+        margin: 0,
         filename: `Sertifikat_STIFIn_${userName}.pdf`,
         image: { type: 'jpeg', quality: 1 },
-        html2canvas: { 
-            scale: 2, 
-            useCORS: true, 
-            logging: false,
-            width: 1080, // Sesuai lebar template
-            height: 760  // Sesuai tinggi template
-        },
-        jsPDF: { 
-            unit: 'mm', 
-            format: 'a4', 
-            orientation: 'landscape',
-            compress: true
-        },
-        pagebreak: { mode: 'avoid-all' }
+        html2canvas: { scale: 2, useCORS: true, logging: false, scrollX: 0, scrollY: 0 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape', compress: true }
     };
 
-    html2pdf().set(opt).from(el).save().then(() => {
-        el.style.display = 'none';
-    });
+    html2pdf().set(opt).from(el).save().then(() => { el.style.display = 'none'; });
 });
 
-// 6. INITIALIZATION
 document.getElementById('user-form').addEventListener('submit', (e) => {
     e.preventDefault();
     userName = document.getElementById('user-name').value;
@@ -277,6 +211,4 @@ document.getElementById('user-form').addEventListener('submit', (e) => {
 });
 
 document.getElementById('restart-button').addEventListener('click', () => location.reload());
-
 populateDateFields();
-window.onload = populateDateFields;
